@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block title %}{{ category.name }} – PHOENIXMARKET{% endblock %}
+{% block content %}
+<section class="bg-slate-950/90">
+  <div class="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:px-8">
+    <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-[0.25em] text-brandOrange">
+          Category
+        </p>
+        <h1 class="mt-1 text-2xl font-semibold tracking-tight text-slate-50 sm:text-3xl">
+          {{ category.name }}
+        </h1>
+        <p class="mt-2 max-w-xl text-sm text-slate-400">
+          Browse listings in this category. Add items to your cart and complete checkout via our secure external marketplace.
+        </p>
+      </div>
+    </div>
+
+    {% if not products %}
+      <p class="mt-8 text-sm text-slate-400">
+        There are no active listings in this category yet. Check back soon or
+        <a href="{{ url_for('products') }}" class="text-brandOrange hover:text-amber-200">view all products</a>.
+      </p>
+    {% else %}
+      <div class="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        {% for product in products %}
+          <article class="flex flex-col rounded-2xl border border-slate-800 bg-slate-950/80 p-5 hover:border-brandOrange/80 hover:bg-slate-950 transition-colors">
+            {% set img_path = product.image_path or product.image %}
+            <div class="mb-3 h-32 w-full overflow-hidden rounded-xl border border-slate-800 bg-slate-900">
+              {% if img_path %}
+                {% if img_path.startswith('/static/') %}
+                  <img src="{{ img_path }}" alt="{{ product.name }}" class="h-full w-full object-cover">
+                {% else %}
+                  <img src="{{ url_for('static', filename=img_path) }}" alt="{{ product.name }}" class="h-full w-full object-cover">
+                {% endif %}
+              {% else %}
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="{{ product.name }}" class="h-full w-full object-cover">
+              {% endif %}
+            </div>
+            <h3 class="text-sm font-semibold text-slate-50">{{ product.name }}</h3>
+            <p class="mt-1 text-[11px] text-slate-400">
+              {{ product.category }}
+            </p>
+            <p class="mt-2 text-xs text-slate-400 line-clamp-3">
+              {{ product.description }}
+            </p>
+            <div class="mt-2 flex items-center justify-between">
+              <p class="text-sm font-semibold text-brandOrange">
+                {{ format_product_price(product) }}
+              </p>
+              <span class="rounded bg-slate-700 px-1.5 py-0.5 text-[10px] font-semibold text-slate-200">{{ get_listing_language_badge(product) }}</span>
+            </div>
+            <div class="mt-4 flex flex-col gap-2">
+              <form method="post" action="{{ url_for('add_to_cart', product_id=product.id) }}">
+                <button class="w-full rounded-full bg-gradient-to-r from-brandRed to-brandOrange px-4 py-2 text-[11px] font-semibold text-black">
+                  Add to cart
+                </button>
+              </form>
+              <a href="{{ url_for('product_detail', slug_or_id=product.slug) }}" class="w-full rounded-full border border-slate-700 px-4 py-2 text-[11px] text-slate-200 hover:border-brandOrange hover:text-brandOrange text-center">
+                {{ t('view_details') }}
+              </a>
+            </div>
+          </article>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}
+

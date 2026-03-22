@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block title %}Admin Content – PHOENIXMARKET{% endblock %}
+{% block content %}
+<section class="bg-slate-950/90">
+  <div class="mx-auto max-w-4xl px-4 py-14 sm:px-6 lg:px-8">
+    <p class="text-xs font-semibold uppercase tracking-[0.25em] text-brandOrange">
+      Admin / Content
+    </p>
+    <h1 class="mt-1 text-2xl font-semibold tracking-tight text-slate-50">
+      Site content management
+    </h1>
+    <p class="mt-1 text-sm text-slate-400">
+      Edit key marketplace texts such as the homepage hero section and checkout copy.
+    </p>
+
+    <form method="post" class="mt-6 space-y-4 text-sm rounded-2xl border border-slate-800 bg-slate-950/80 p-5">
+      <h2 class="text-sm font-semibold text-slate-100 mb-1">Homepage hero</h2>
+      <div>
+        <label class="block text-xs font-medium text-slate-300 mb-1">Hero badge</label>
+        <input type="text" name="hero_badge" value="{{ site_content.hero_badge }}" class="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 focus:border-brandOrange focus:outline-none">
+      </div>
+      <div>
+        <label class="block text-xs font-medium text-slate-300 mb-1">Hero title</label>
+        <input type="text" name="hero_title" value="{{ site_content.hero_title }}" class="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 focus:border-brandOrange focus:outline-none">
+      </div>
+      <div>
+        <label class="block text-xs font-medium text-slate-300 mb-1">Hero subtitle</label>
+        <textarea name="hero_subtitle" rows="3" class="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 focus:border-brandOrange focus:outline-none">{{ site_content.hero_subtitle }}</textarea>
+      </div>
+      <div>
+        <label class="block text-xs font-medium text-slate-300 mb-1">Hero CTA label</label>
+        <input type="text" name="hero_cta_label" value="{{ site_content.hero_cta_label }}" class="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 focus:border-brandOrange focus:outline-none">
+      </div>
+
+      <h2 class="pt-4 text-sm font-semibold text-slate-100 mb-1">Checkout</h2>
+      <div>
+        <label class="block text-xs font-medium text-slate-300 mb-1">Checkout helper text</label>
+        <textarea name="checkout_helper_text" rows="3" class="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 focus:border-brandOrange focus:outline-none">{{ site_content.checkout_helper_text }}</textarea>
+      </div>
+      <div>
+        <label class="block text-xs font-medium text-slate-300 mb-1">Checkout button label</label>
+        <input type="text" name="checkout_button_label" value="{{ site_content.checkout_button_label }}" class="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 focus:border-brandOrange focus:outline-none">
+      </div>
+
+      <h2 class="pt-4 text-sm font-semibold text-slate-100 mb-1">Footer</h2>
+      <div>
+        <label class="block text-xs font-medium text-slate-300 mb-1">Footer contact text</label>
+        <input type="text" name="footer_contact_text" value="{{ site_content.footer_contact_text }}" class="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 focus:border-brandOrange focus:outline-none">
+      </div>
+      <div>
+        <label class="block text-xs font-medium text-slate-300 mb-1">Footer Discord text</label>
+        <input type="text" name="footer_discord_text" value="{{ site_content.footer_discord_text }}" class="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 focus:border-brandOrange focus:outline-none">
+      </div>
+
+      <div class="pt-4 flex justify-end">
+        <button type="submit" class="inline-flex rounded-full bg-gradient-to-r from-brandRed to-brandOrange px-5 py-2 text-xs font-semibold text-black">
+          Save content
+        </button>
+      </div>
+    </form>
+  </div>
+</section>
+{% endblock %}
+
