@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>PHOENIXMARKET – Digital Services Marketplace</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="PHOENIXMARKET – Fast and reliable digital services marketplace for Canva Pro, Instagram followers, TikTok views, and ChatGPT accounts."
+  />
+
+  <!-- TailwindCSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            phoenix: {
+              50: "#FFF4ED",
+              100: "#FFE0D0",
+              200: "#FFB89A",
+              300: "#FF8F63",
+              400: "#FF6A33",
+              500: "#F15025",
+              600: "#D13F1B",
+              700: "#A22F13",
+              800: "#741F0D",
+              900: "#3D1006"
+            }
+          },
+          fontFamily: {
+            sans: ["Inter", "system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "sans-serif"]
+          },
+          boxShadow: {
+            soft: "0 22px 60px rgba(0,0,0,0.7)"
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+      background: #05030a;
+    }
+    .bg-grid {
+      background:
+        radial-gradient(circle at 0 0, rgba(241, 80, 37, 0.12), transparent 55%),
+        radial-gradient(circle at 100% 0, rgba(255, 143, 99, 0.1), transparent 55%),
+        radial-gradient(circle at 50% 100%, rgba(255, 106, 51, 0.15), transparent 60%);
+    }
+  </style>
+</head>
+<body class="bg-black text-slate-100 font-sans antialiased">
+
+  <div class="min-h-screen bg-grid">
+    <!-- NAVBAR -->
+    <header class="sticky top-0 z-30 border-b border-slate-900/90 bg-black/80 backdrop-blur-xl">
+      <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
+        <a href="#hero" class="flex items-center gap-3">
+          <div class="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-tr from-phoenix-600 via-phoenix-400 to-amber-300 shadow-soft">
+            <span class="text-xs font-semibold tracking-[0.22em] text-black">PM</span>
+          </div>
+        <div class="flex flex-col leading-tight">
+            <span class="text-sm font-semibold tracking-[0.28em] text-slate-100">
+              PHOENIXMARKET
+            </span>
+            <span class="text-[11px] text-slate-500">
+              Digital Services Marketplace
+            </span>
+          </div>
+        </a>
+
+        <nav class="hidden items-center gap-8 text-xs font-medium text-slate-300/90 md:flex">
+          <a href="#services" class="hover:text-phoenix-300 transition-colors">Services</a>
+          <a href="#why-us" class="hover:text-phoenix-300 transition-colors">Why us</a>
+          <a href="#stats" class="hover:text-phoenix-300 transition-colors">Stats</a>
+          <a href="#contact" class="hover:text-phoenix-300 transition-colors">Contact</a>
+          <a
+            href="#contact"
+            class="rounded-full bg-gradient-to-r from-phoenix-500 to-phoenix-300 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-black shadow-soft hover:from-phoenix-400 hover:to-amber-300 transition-colors"
+          >
+            Get started
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section id="hero" class="relative overflow-hidden">
+        <div class="mx-auto flex max-w-6xl flex-col gap-12 px-4 py-16 sm:px-6 lg:flex-row lg:items-center lg:px-8 lg:py-24">
+          <!-- Text -->
+          <div class="relative z-10 max-w-xl space-y-7">
+            <div class="inline-flex items-center gap-2 rounded-full border border-phoenix-500/25 bg-black/60 px-3 py-1 text-[11px] font-medium text-phoenix-200/90">
+              <span class="h-1.5 w-1.5 rounded-full bg-gradient-to-tr from-phoenix-400 to-amber-200 animate-pulse"></span>
+              <span class="uppercase tracking-[0.24em]">
+                Fast & reliable marketplace
+              </span>
+            </div>
+
+            <div class="space-y-3">
+              <h1 class="text-balance text-4xl font-semibold tracking-tight text-slate-50 sm:text-5xl lg:text-6xl">
+                Scale your digital presence
+                <span class="block text-transparent bg-clip-text bg-gradient-to-r from-phoenix-300 via-amber-200 to-slate-100">
+                  with PHOENIXMARKET
+                </span>
+              </h1>
+              <p class="max-w-lg text-sm leading-relaxed text-slate-300/95 sm:text-base">
+                <span class="font-medium text-slate-100">PHOENIXMARKET</span> is a
+                modern digital services marketplace for creators, agencies, and online
+                businesses. Get Canva Pro, social growth, and AI access with clear pricing,
+                reliable delivery, and human support.
+              </p>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-3 pt-2">
+              <a
+                href="#services"
+                class="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-phoenix-500 to-phoenix-300 px-6 py-2.5 text-sm font-semibold text-black shadow-soft hover:from-phoenix-400 hover:to-amber-300 transition-colors"
+              >
+                Browse services
+              </a>
+              <a
+                href="#contact"
+                class="inline-flex items-center justify-center rounded-full border border-slate-700/80 bg-black/60 px-5 py-2.5 text-sm font-medium text-slate-200 hover:border-phoenix-400/80 hover:text-phoenix-100 transition-colors"
+              >
+                Talk to our team
+              </a>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-6 pt-3 text-[11px] text-slate-400">
+              <div class="flex items-center gap-2">
+                <span class="inline-flex h-5 w-5 items-center justify-center rounded-full bg-emerald-500/15 text-emerald-300 text-[11px]">
+                  ✓
+                </span>
+                <span>300+ customers worldwide</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="inline-flex h-5 w-5 items-center justify-center rounded-full bg-phoenix-500/20 text-phoenix-200 text-[11px]">
+                  ⚡
+                </span>
+                <span>Under 24h average delivery</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hero Panel -->
+          <div class="relative mt-8 flex-1 lg:mt-0">
+            <div class="absolute -inset-16 -z-10 opacity-70 blur-3xl">
+              <div class="h-full w-full bg-gradient-to-tr from-phoenix-700 via-phoenix-500 to-amber-300 mix-blend-screen"></div>
+            </div>
+
+            <div class="mx-auto max-w-md rounded-3xl border border-slate-800/80 bg-gradient-to-br from-slate-950/95 via-slate-950 to-slate-900/90 p-5 shadow-soft backdrop-blur">
+              <div class="flex items-center justify-between pb-4">
+                <div>
+                  <p class="text-[11px] font-medium uppercase tracking-[0.22em] text-slate-400">
+                    Marketplace overview
+                  </p>
+                  <p class="mt-1 text-sm font-semibold text-slate-100">
+                    Today&apos;s performance snapshot
+                  </p>
+                </div>
+                <span class="rounded-full bg-black/80 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-emerald-300 border border-emerald-500/40">
+                  Live
+                </span>
+              </div>
+
+              <div class="grid grid-cols-2 gap-3 text-xs">
+                <div class="rounded-2xl border border-slate-800 bg-slate-950/85 p-3">
+                  <p class="text-[11px] text-slate-400">Active customers</p>
+                  <p class="mt-1 text-xl font-semibold text-slate-50">300+</p>
+                  <p class="mt-1 text-[11px] text-emerald-300">High repeat rate</p>
+                </div>
+
+                <div class="rounded-2xl border border-slate-800 bg-slate-950/85 p-3">
+                  <p class="text-[11px] text-slate-400">Orders completed</p>
+                  <p class="mt-1 text-xl font-semibold text-slate-50">500+</p>
+                  <p class="mt-1 text-[11px] text-phoenix-200">Consistent delivery</p>
+                </div>
+
+                <div class="col-span-2 rounded-2xl border border-slate-800 bg-gradient-to-br from-phoenix-800/85 via-phoenix-600/80 to-slate-950/90 p-3">
+                  <div class="flex items-center justify-between gap-3">
+                    <div>
+                      <p class="text-[11px] text-phoenix-100/90">Average delivery time</p>
+                      <p class="mt-1 text-xl font-semibold text-amber-100">
+                        Under 24 hours
+                      </p>
+                      <p class="mt-1 text-[10px] text-phoenix-100/80">
+                        Optimized automations with manual review where it matters.
+                      </p>
+                    </div>
+                    <div class="h-11 w-11 rounded-full bg-black/40 border border-amber-200/60 flex items-center justify-center text-amber-200 text-base">
+                      ⚡
+                    </div>
+                  </div>
+                  <div class="mt-3 h-1.5 w-full overflow-hidden rounded-full bg-black/40">
+                    <div class="h-full w-4/5 bg-gradient-to-r from-amber-400 via-phoenix-400 to-red-500"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-4 flex items-center justify-between border-t border-slate-800/80 pt-3 text-[11px] text-slate-400">
+                <span>Secure payments • Clear communication</span>
+                <span class="text-phoenix-200">Backed by real operators</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SERVICES -->
+      <section id="services" class="border-t border-slate-900/80 bg-black/70">
+        <div class="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
+          <div class="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-[0.28em] text-phoenix-300">
+                Services
+              </p>
+              <h2 class="mt-2 text-2xl font-semibold tracking-tight text-slate-50 sm:text-3xl">
+                Everything you need to grow online
+              </h2>
+              <p class="mt-2 max-w-xl text-sm text-slate-400">
+                Choose from our curated set of digital services. Each offer comes with
+                clear expectations, fast delivery, and ongoing support from our team.
+              </p>
+            </div>
+            <div class="text-xs text-slate-400">
+              Simple structure, no hidden upsells.
+              <span class="text-phoenix-200">Pick a service, then contact us to confirm your package.</span>
+            </div>
+          </div>
+
+          <div class="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+            <!-- Canva Pro -->
+            <article class="group flex flex-col rounded-2xl border border-slate-800 bg-slate-950/70 p-5 shadow-soft/40 ring-1 ring-phoenix-500/35 transition-all hover:-translate-y-1 hover:bg-slate-950">
+              <div class="flex items-center justify-between gap-3">
+                <h3 class="text-sm font-semibold text-slate-50">Canva Pro Subscription</h3>
+                <span class="rounded-full bg-phoenix-600/20 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-phoenix-100">
+                  Popular
+                </span>
+              </div>
+              <p class="mt-3 text-xs leading-relaxed text-slate-400">
+                Unlock premium design features and templates at a fraction of the usual
+                cost, with secure and quick account delivery.
+              </p>
+              <ul class="mt-4 space-y-1.5 text-[11px] text-slate-300">
+                <li>• Official Canva Pro access</li>
+                <li>• Clear setup instructions</li>
+                <li>• Renewal options available</li>
+              </ul>
+              <div class="mt-4 flex items-center justify-between text-[11px] text-slate-400">
+                <span>From <span class="text-phoenix-200">affordable monthly rates</span></span>
+              </div>
+              <button
+                class="mt-5 inline-flex items-center justify-center rounded-full bg-gradient-to-r from-phoenix-500 to-phoenix-300 px-4 py-2 text-xs font-semibold text-black shadow-soft hover:from-phoenix-400 hover:to-amber-300 transition-colors"
+              >
+                View Canva Pro options
+              </button>
+            </article>
+
+            <!-- Instagram Followers -->
+            <article class="group flex flex-col rounded-2xl border border-slate-800 bg-slate-950/60 p-5 shadow-soft/40 transition-all hover:-translate-y-1 hover:border-phoenix-400/80 hover:bg-slate-950">
+              <div class="flex items-center justify-between gap-3">
+                <h3 class="text-sm font-semibold text-slate-50">Instagram Followers</h3>
+                <span class="rounded-full bg-emerald-600/20 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-emerald-200">
+                  Growth
+                </span>
+              </div>
+              <p class="mt-3 text-xs leading-relaxed text-slate-400">
+                Give your profile a credibility boost with follower packages designed to
+                look natural and support your long-term brand.
+              </p>
+              <ul class="mt-4 space-y-1.5 text-[11px] text-slate-300">
+                <li>• Multiple package sizes</li>
+                <li>• Gradual, realistic delivery</li>
+                <li>• For brands, creators & stores</li>
+              </ul>
+              <div class="mt-4 flex items-center justify-between text-[11px] text-slate-400">
+                <span>From <span class="text-phoenix-200">starter to bulk tiers</span></span>
+              </div>
+              <button
+                class="mt-5 inline-flex items-center justify-center rounded-full bg-transparent px-4 py-2 text-xs font-semibold text-phoenix-200 ring-1 ring-phoenix-500/60 hover:bg-phoenix-500 hover:text-black hover:ring-phoenix-400 transition-colors"
+              >
+                Explore IG packages
+              </button>
+            </article>
+
+            <!-- TikTok Views -->
+            <article class="group flex flex-col rounded-2xl border border-slate-800 bg-slate-950/60 p-5 shadow-soft/40 transition-all hover:-translate-y-1 hover:border-phoenix-400/80 hover:bg-slate-950">
+              <div class="flex items-center justify-between gap-3">
+                <h3 class="text-sm font-semibold text-slate-50">TikTok Views</h3>
+                <span class="rounded-full bg-indigo-600/25 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-indigo-100">
+                  Reach
+                </span>
+              </div>
+              <p class="mt-3 text-xs leading-relaxed text-slate-400">
+                Push your TikTok videos with high-quality view campaigns crafted to help
+                you hit explore and &quot;For You&quot; feeds.
+              </p>
+              <ul class="mt-4 space-y-1.5 text-[11px] text-slate-300">
+                <li>• Flexible view volumes</li>
+                <li>• Suitable for single or bulk posts</li>
+                <li>• Fast activation after payment</li>
+              </ul>
+              <div class="mt-4 flex items-center justify-between text-[11px] text-slate-400">
+                <span>Optimized for <span class="text-phoenix-200">visibility</span></span>
+              </div>
+              <button
+                class="mt-5 inline-flex items-center justify-center rounded-full bg-transparent px-4 py-2 text-xs font-semibold text-phoenix-200 ring-1 ring-phoenix-500/60 hover:bg-phoenix-500 hover:text-black hover:ring-phoenix-400 transition-colors"
+              >
+                View TikTok options
+              </button>
+            </article>
+
+            <!-- ChatGPT Accounts -->
+            <article class="group flex flex-col rounded-2xl border border-slate-800 bg-slate-950/70 p-5 shadow-soft/40 transition-all hover:-translate-y-1 hover:border-phoenix-400/80 hover:bg-slate-950">
+              <div class="flex items-center justify-between gap-3">
+                <h3 class="text-sm font-semibold text-slate-50">ChatGPT Accounts</h3>
+                <span class="rounded-full bg-amber-500/20 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-amber-100">
+                  AI
+                </span>
+              </div>
+              <p class="mt-3 text-xs leading-relaxed text-slate-400">
+                Gain reliable access to AI for research, coding, content, and automation.
+                Delivered securely with clear guidance.
+              </p>
+              <ul class="mt-4 space-y-1.5 text-[11px] text-slate-300">
+                <li>• Account setup & onboarding</li>
+                <li>• Options for different usage levels</li>
+                <li>• Ongoing help if needed</li>
+              </ul>
+              <div class="mt-4 flex items-center justify-between text-[11px] text-slate-400">
+                <span>Built for <span class="text-phoenix-200">creators & teams</span></span>
+              </div>
+              <button
+                class="mt-5 inline-flex items-center justify-center rounded-full bg-gradient-to-r from-phoenix-500 to-phoenix-300 px-4 py-2 text-xs font-semibold text-black shadow-soft hover:from-phoenix-400 hover:to-amber-300 transition-colors"
+              >
+                Discover ChatGPT access
+              </button>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHY CHOOSE US -->
+      <section id="why-us" class="border-t border-slate-900/80 bg-gradient-to-b from-black via-slate-950 to-black">
+        <div class="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
+          <div class="grid gap-10 md:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] md:items-center">
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-[0.28em] text-phoenix-300">
+                Why choose us
+              </p>
+              <h2 class="mt-2 text-2xl font-semibold tracking-tight text-slate-50 sm:text-3xl">
+                A marketplace built for speed, clarity, and trust
+              </h2>
+              <p class="mt-3 text-sm text-slate-400">
+                PHOENIXMARKET combines automation with human oversight so your orders are
+                handled quickly and correctly. No confusing dashboards or bloated
+                features—just digital services that work.
+              </p>
+            </div>
+
+            <dl class="grid gap-4 text-sm text-slate-200">
+              <div class="flex gap-3 rounded-2xl border border-slate-800 bg-black/75 p-4">
+                <div class="mt-1 h-7 w-7 flex-shrink-0 rounded-full bg-phoenix-600/30 text-phoenix-200 flex items-center justify-center text-xs">
+                  ⚡
+                </div>
+                <div>
+                  <dt class="font-semibold">Fast delivery</dt>
+                  <dd class="mt-1 text-xs text-slate-400">
+                    Optimized workflows and clear processes keep average delivery times
+                    under 24 hours for most orders.
+                  </dd>
+                </div>
+              </div>
+
+              <div class="flex gap-3 rounded-2xl border border-slate-800 bg-black/75 p-4">
+                <div class="mt-1 h-7 w-7 flex-shrink-0 rounded-full bg-emerald-600/25 text-emerald-200 flex items-center justify-center text-xs">
+                  💰
+                </div>
+                <div>
+                  <dt class="font-semibold">Affordable pricing</dt>
+                  <dd class="mt-1 text-xs text-slate-400">
+                    Pricing is structured for solo creators and growing teams alike, with
+                    transparent costs and no hidden extras.
+                  </dd>
+                </div>
+              </div>
+
+              <div class="flex gap-3 rounded-2xl border border-slate-800 bg-black/75 p-4">
+                <div class="mt-1 h-7 w-7 flex-shrink-0 rounded-full bg-sky-600/25 text-sky-200 flex items-center justify-center text-xs">
+                  ✅
+                </div>
+                <div>
+                  <dt class="font-semibold">Trusted operations</dt>
+                  <dd class="mt-1 text-xs text-slate-400">
+                    Hundreds of successfully fulfilled orders and returning customers who
+                    rely on PHOENIXMARKET for repeat campaigns.
+                  </dd>
+                </div>
+              </div>
+
+              <div class="flex gap-3 rounded-2xl border border-slate-800 bg-black/75 p-4">
+                <div class="mt-1 h-7 w-7 flex-shrink-0 rounded-full bg-phoenix-500/25 text-phoenix-200 flex items-center justify-center text-xs">
+                  💬
+                </div>
+                <div>
+                  <dt class="font-semibold">Human support</dt>
+                  <dd class="mt-1 text-xs text-slate-400">
+                    Talk directly with real operators via Discord or email. We keep you
+                    updated and answer questions quickly.
+                  </dd>
+                </div>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </section>
+
+      <!-- STATS -->
+      <section id="stats" class="border-t border-slate-900/80 bg-black/80">
+        <div class="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:px-8">
+          <div class="rounded-3xl border border-slate-800 bg-gradient-to-r from-slate-950 via-slate-950 to-phoenix-900/80 px-6 py-8 sm:px-10 sm:py-10 shadow-soft">
+            <div class="grid gap-8 md:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] md:items-center">
+              <div>
+                <p class="text-xs font-semibold uppercase tracking-[0.28em] text-phoenix-300">
+                  Numbers that matter
+                </p>
+                <h2 class="mt-2 text-2xl font-semibold tracking-tight text-slate-50 sm:text-3xl">
+                  Growing with every creator we help
+                </h2>
+                <p class="mt-3 text-sm text-slate-400">
+                  Our numbers reflect consistency rather than vanity metrics. Each
+                  completed order is one more client with a stronger digital presence and
+                  less manual work on their plate.
+                </p>
+              </div>
+
+              <dl class="grid grid-cols-3 gap-4 text-center text-slate-50">
+                <div class="rounded-2xl border border-slate-800 bg-black/70 px-3 py-4">
+                  <dt class="text-[11px] text-slate-400">Customers</dt>
+                  <dd class="mt-1 text-2xl font-semibold tracking-tight">
+                    300<span class="text-phoenix-300">+</span>
+                  </dd>
+                </div>
+                <div class="rounded-2xl border border-slate-800 bg-black/70 px-3 py-4">
+                  <dt class="text-[11px] text-slate-400">Orders</dt>
+                  <dd class="mt-1 text-2xl font-semibold tracking-tight">
+                    500<span class="text-phoenix-300">+</span>
+                  </dd>
+                </div>
+                <div class="rounded-2xl border border-slate-800 bg-black/70 px-3 py-4">
+                  <dt class="text-[11px] text-slate-400">Avg. delivery</dt>
+                  <dd class="mt-1 text-xl font-semibold tracking-tight text-emerald-300">
+                    Fast
+                  </dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact" class="border-t border-slate-900/80 bg-black">
+        <div class="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
+          <div class="grid gap-8 md:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] md:items-center">
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-[0.28em] text-phoenix-300">
+                Contact
+              </p>
+              <h2 class="mt-2 text-2xl font-semibold tracking-tight text-slate-50 sm:text-3xl">
+                Ready to launch your next order?
+              </h2>
+              <p class="mt-3 text-sm text-slate-400">
+                Share the service you&apos;re interested in, your target platform, and any
+                specific requirements. We&apos;ll reply with package options, pricing, and
+                estimated delivery times.
+              </p>
+              <p class="mt-3 text-xs text-slate-500">
+                Typical response time: <span class="text-phoenix-200">under a few hours</span>.
+              </p>
+            </div>
+
+            <div class="space-y-4 rounded-2xl border border-slate-800 bg-slate-950/85 p-6 shadow-soft">
+              <div>
+                <p class="text-[11px] font-semibold uppercase tracking-[0.26em] text-slate-400">
+                  Discord
+                </p>
+                <p class="mt-1 text-sm text-slate-100">
+                  Add us on Discord and send your request.
+                </p>
+                <p class="mt-1 text-xs text-phoenix-200">
+                  YourDiscordTag#0000
+                </p>
+              </div>
+
+              <div class="border-t border-slate-800/80 pt-4">
+                <p class="text-[11px] font-semibold uppercase tracking-[0.26em] text-slate-400">
+                  Email
+                </p>
+                <p class="mt-1 text-sm text-slate-100">
+                  Prefer email? We&apos;ve got you covered.
+                </p>
+                <a
+                  href="mailto:contact@phoenixmarket.example"
+                  class="mt-1 inline-flex text-xs font-medium text-phoenix-200 hover:text-amber-200 transition-colors"
+                >
+                  contact@phoenixmarket.example
+                </a>
+              </div>
+
+              <div class="border-t border-slate-800/80 pt-4 text-[11px] text-slate-500">
+                Include: service type, platform handle or link, preferred delivery speed,
+                and any deadlines. We&apos;ll confirm everything before you pay.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-slate-900/90 bg-black/95">
+      <div class="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-6 text-[11px] text-slate-500 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
+        <div class="flex items-center gap-3">
+          <span class="font-semibold tracking-[0.22em] text-slate-300">
+            PHOENIXMARKET
+          </span>
+          <span class="text-slate-500">© 2026</span>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-4">
+          <nav class="flex flex-wrap gap-3">
+            <a href="#services" class="hover:text-phoenix-300 transition-colors">Services</a>
+            <a href="#why-us" class="hover:text-phoenix-300 transition-colors">Why us</a>
+            <a href="#stats" class="hover:text-phoenix-300 transition-colors">Stats</a>
+            <a href="#contact" class="hover:text-phoenix-300 transition-colors">Contact</a>
+          </nav>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

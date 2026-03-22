@@ -1,0 +1,19 @@
+# Render Blueprint - deploy from repo root
+# Required env: SECRET_KEY, ITEMSATIS_REDIRECT_URL, ADMIN_USERNAME, ADMIN_PASSWORD
+# Optional: DATABASE_PATH (default data/phoenixmarket.db on disk; add a Render disk for persistence)
+services:
+  - type: web
+    name: phoenixmarket
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app --bind 0.0.0.0:$PORT --workers 1 --threads 4
+    healthCheckPath: /health
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
+      - key: ITEMSATIS_REDIRECT_URL
+        sync: false
+      - key: ADMIN_USERNAME
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}{{ t('order_confirmation_title') }} – PHOENIXMARKET{% endblock %}
+{% block content %}
+<section class="bg-slate-950/90">
+  <div class="mx-auto max-w-2xl px-4 py-14 sm:px-6 lg:px-8">
+    <p class="text-xs font-semibold uppercase tracking-[0.25em] text-brandOrange">{{ t('order_confirmation_title') }}</p>
+    <h1 class="mt-2 text-2xl font-semibold tracking-tight text-slate-50 sm:text-3xl">
+      {{ t('order_confirmation_heading') }}
+    </h1>
+    <p class="mt-3 text-sm text-slate-400">
+      {{ t('order_confirmation_intro') }}
+    </p>
+
+    <div class="mt-8 space-y-4 rounded-2xl border border-slate-800 bg-slate-950/80 p-5 text-sm">
+      <div class="flex flex-wrap justify-between gap-2 border-b border-slate-800 pb-3">
+        <span class="text-slate-400">{{ t('order_number_label') }}</span>
+        <span class="font-mono text-slate-100">#{{ order.id }}</span>
+      </div>
+      <div>
+        <p class="text-xs text-slate-500 mb-1">{{ t('track_order_link_label') }}</p>
+        <p class="break-all rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 font-mono text-xs text-brandOrange">
+          {{ request.url_root.rstrip('/') }}{{ url_for('track_order', token=order.tracking_token) }}
+        </p>
+      </div>
+      <a href="{{ url_for('track_order', token=order.tracking_token) }}" class="inline-block text-xs text-brandOrange hover:text-amber-200">
+        {{ t('track_order_cta') }} →
+      </a>
+    </div>
+
+    <div class="mt-8">
+      <a href="{{ itemsatis_url }}" class="inline-flex w-full items-center justify-center rounded-full bg-gradient-to-r from-brandRed to-brandOrange px-6 py-3 text-sm font-semibold text-black hover:opacity-95">
+        {{ site_content.checkout_button_label }}
+      </a>
+      <p class="mt-3 text-center text-[11px] text-slate-500">
+        {{ site_content.checkout_helper_text }}
+      </p>
+    </div>
+  </div>
+</section>
+{% endblock %}

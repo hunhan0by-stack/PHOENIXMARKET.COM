@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Admin Login – PHOENIXMARKET{% endblock %}
+{% block content %}
+<section class="bg-slate-950/90">
+  <div class="mx-auto max-w-sm px-4 py-14 sm:px-6 lg:px-8">
+    <p class="text-xs font-semibold uppercase tracking-[0.25em] text-brandOrange">
+      Admin access
+    </p>
+    <h1 class="mt-1 text-2xl font-semibold tracking-tight text-slate-50">
+      Admin login
+    </h1>
+    <p class="mt-2 text-sm text-slate-400">
+      Restricted area for PHOENIXMARKET operations only.
+    </p>
+
+    <form method="post" class="mt-6 space-y-4">
+      <div>
+        <label class="block text-xs font-medium text-slate-300 mb-1">Username</label>
+        <input type="text" name="username" class="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 focus:border-brandOrange focus:outline-none" required>
+      </div>
+      <div>
+        <label class="block text-xs font-medium text-slate-300 mb-1">Password</label>
+        <input type="password" name="password" class="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 focus:border-brandOrange focus:outline-none" required>
+      </div>
+      <button type="submit" class="w-full rounded-full bg-gradient-to-r from-brandRed to-brandOrange px-4 py-2.5 text-sm font-semibold text-black">
+        Login as admin
+      </button>
+    </form>
+
+  </div>
+</section>
+{% endblock %}
+

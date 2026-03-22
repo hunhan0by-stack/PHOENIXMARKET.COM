@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}Orders – Admin – PHOENIXMARKET{% endblock %}
+{% block content %}
+<section class="bg-slate-950/90">
+  <div class="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:px-8">
+    <div class="flex flex-wrap items-center justify-between gap-4">
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-[0.25em] text-brandOrange">Admin</p>
+        <h1 class="mt-1 text-2xl font-semibold tracking-tight text-slate-50">Orders</h1>
+        <p class="mt-1 text-sm text-slate-400">Fulfillment and tracking (SQLite).</p>
+      </div>
+      <a href="{{ url_for('admin_dashboard') }}" class="text-xs text-brandOrange hover:text-amber-200">← Dashboard</a>
+    </div>
+
+    <div class="mt-8 overflow-x-auto rounded-2xl border border-slate-800 bg-slate-950/80 text-[11px]">
+      <table class="min-w-full divide-y divide-slate-800">
+        <thead class="bg-slate-950/80 text-slate-400">
+          <tr>
+            <th class="px-3 py-2 text-left">ID</th>
+            <th class="px-3 py-2 text-left">Date</th>
+            <th class="px-3 py-2 text-left">Customer</th>
+            <th class="px-3 py-2 text-left">Email</th>
+            <th class="px-3 py-2 text-left">Status</th>
+            <th class="px-3 py-2 text-right">Total</th>
+            <th class="px-3 py-2 text-right">Action</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-slate-800 text-slate-200">
+          {% for o in orders %}
+          <tr>
+            <td class="px-3 py-2 font-mono">#{{ o.id }}</td>
+            <td class="px-3 py-2 text-slate-400">{{ o.created_at.strftime('%Y-%m-%d %H:%M') if o.created_at else '—' }}</td>
+            <td class="px-3 py-2">{{ o.full_name }}</td>
+            <td class="px-3 py-2 text-slate-400">{{ o.user_email }}</td>
+            <td class="px-3 py-2 capitalize text-brandOrange">{{ o.fulfillment_status }}</td>
+            <td class="px-3 py-2 text-right">${{ "%.2f"|format(o.total_price) }}</td>
+            <td class="px-3 py-2 text-right">
+              <a href="{{ url_for('admin_order_detail', order_id=o.id) }}" class="text-brandOrange hover:text-amber-200">Manage</a>
+            </td>
+          </tr>
+          {% else %}
+          <tr>
+            <td colspan="7" class="px-3 py-8 text-center text-slate-500">No orders yet.</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+{% endblock %}

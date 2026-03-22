@@ -1,0 +1,175 @@
+{% extends "base.html" %}
+{% block title %}Admin Dashboard – PHOENIXMARKET{% endblock %}
+{% block content %}
+<section class="bg-slate-950/90">
+  <div class="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:px-8">
+    <div class="grid gap-6 md:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)]">
+      <div class="space-y-3">
+        <p class="text-xs font-semibold uppercase tracking-[0.25em] text-brandOrange">
+          Admin
+        </p>
+        <h1 class="mt-1 text-2xl font-semibold tracking-tight text-slate-50">
+          Operations dashboard
+        </h1>
+        <p class="mt-1 text-sm text-slate-400">
+          High-level overview of marketplace activity and management tools.
+        </p>
+      </div>
+      <nav class="grid gap-2 text-[11px] text-slate-200">
+        <a href="{{ url_for('admin_orders') }}" class="inline-flex items-center justify-between rounded-full border border-slate-800 bg-slate-950/80 px-4 py-2 hover:border-brandOrange hover:text-brandOrange">
+          <span>Orders</span>
+          <span class="text-slate-500">Tracking & fulfillment</span>
+        </a>
+        <a href="{{ url_for('admin_listings') }}" class="inline-flex items-center justify-between rounded-full border border-slate-800 bg-slate-950/80 px-4 py-2 hover:border-brandOrange hover:text-brandOrange">
+          <span>Listings</span>
+          <span class="text-slate-500">Create / edit / delete</span>
+        </a>
+        <a href="{{ url_for('admin_categories') }}" class="inline-flex items-center justify-between rounded-full border border-slate-800 bg-slate-950/80 px-4 py-2 hover:border-brandOrange hover:text-brandOrange">
+          <span>Categories</span>
+          <span class="text-slate-500">Structure marketplace</span>
+        </a>
+        <a href="{{ url_for('admin_content') }}" class="inline-flex items-center justify-between rounded-full border border-slate-800 bg-slate-950/80 px-4 py-2 hover:border-brandOrange hover:text-brandOrange">
+          <span>Content</span>
+          <span class="text-slate-500">Homepage & texts</span>
+        </a>
+        <a href="{{ url_for('admin_settings') }}" class="inline-flex items-center justify-between rounded-full border border-slate-800 bg-slate-950/80 px-4 py-2 hover:border-brandOrange hover:text-brandOrange">
+          <span>Settings</span>
+          <span class="text-slate-500">Links & checkout</span>
+        </a>
+      </nav>
+    </div>
+
+    <div class="mt-8 grid gap-6 md:grid-cols-3">
+      <div class="rounded-2xl border border-slate-800 bg-slate-950/80 p-4">
+        <p class="text-xs text-slate-400">Products (active / total)</p>
+        <p class="mt-1 text-2xl font-semibold text-slate-50">
+          {{ active_products }} / {{ total_products }}
+        </p>
+      </div>
+      <div class="rounded-2xl border border-slate-800 bg-slate-950/80 p-4">
+        <p class="text-xs text-slate-400">Orders</p>
+        <p class="mt-1 text-2xl font-semibold text-slate-50">
+          {{ total_orders }}
+        </p>
+        <p class="mt-1 text-[11px] text-slate-500">
+          Stored in SQLite. Use Orders to update status and tracking.
+        </p>
+      </div>
+      <div class="rounded-2xl border border-slate-800 bg-slate-950/80 p-4">
+        <p class="text-xs text-slate-400">Users</p>
+        <p class="mt-1 text-2xl font-semibold text-slate-50">
+          —
+        </p>
+        <p class="mt-1 text-[11px] text-slate-500">
+          User analytics will be added here when authentication is backed by a database.
+        </p>
+      </div>
+    </div>
+
+    {% if analytics %}
+    <div class="mt-10">
+      <h2 class="text-sm font-semibold text-slate-100 mb-3">Visitor analytics</h2>
+      <div class="grid gap-4 md:grid-cols-3 mb-6">
+        <div class="rounded-2xl border border-slate-800 bg-slate-950/80 p-4">
+          <p class="text-xs text-slate-400">Total visitors (unique IPs)</p>
+          <p class="mt-1 text-2xl font-semibold text-slate-50">{{ analytics.total_visitors }}</p>
+        </div>
+        <div class="rounded-2xl border border-slate-800 bg-slate-950/80 p-4">
+          <p class="text-xs text-slate-400">Total visits (page views)</p>
+          <p class="mt-1 text-2xl font-semibold text-slate-50">{{ analytics.total_visits }}</p>
+        </div>
+        <div class="rounded-2xl border border-slate-800 bg-slate-950/80 p-4">
+          <p class="text-xs text-slate-400">Today's visits</p>
+          <p class="mt-1 text-2xl font-semibold text-slate-50">{{ analytics.today_visits }}</p>
+        </div>
+      </div>
+      {% if analytics.top_pages %}
+      <div class="mb-6 rounded-2xl border border-slate-800 bg-slate-950/80 p-4">
+        <p class="text-xs text-slate-400 mb-2">Top visited pages</p>
+        <ul class="text-[11px] text-slate-300 space-y-1">
+          {% for path, count in analytics.top_pages %}
+          <li><span class="text-slate-500 font-mono">{{ path }}</span> — {{ count }} hits</li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+      <div class="overflow-x-auto rounded-2xl border border-slate-800 bg-slate-950/80 text-[11px]">
+        <table class="min-w-full divide-y divide-slate-800">
+          <thead class="bg-slate-950/80 text-slate-300">
+            <tr>
+              <th class="px-3 py-2 text-left">Time</th>
+              <th class="px-3 py-2 text-left">Path / Page</th>
+              <th class="px-3 py-2 text-left">IP / Visitor</th>
+              <th class="px-3 py-2 text-left">User agent</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-800">
+            {% for v in analytics.recent_visits %}
+            <tr>
+              <td class="px-3 py-2 text-slate-400">{{ v.ts[:19] if v.ts else '—' }}</td>
+              <td class="px-3 py-2 text-slate-100 font-mono">{{ v.path }}</td>
+              <td class="px-3 py-2 text-slate-300">{{ v.ip }}</td>
+              <td class="px-3 py-2 text-slate-400">{{ v.user_agent_summary }}</td>
+            </tr>
+            {% else %}
+            <tr>
+              <td colspan="4" class="px-3 py-4 text-slate-500 text-center">No visits recorded yet.</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    {% endif %}
+
+    <div class="mt-10">
+      <h2 class="text-sm font-semibold text-slate-100 mb-3">Product catalog</h2>
+      <div class="overflow-x-auto rounded-2xl border border-slate-800 bg-slate-950/80 text-[11px]">
+        <table class="min-w-full divide-y divide-slate-800">
+          <thead class="bg-slate-950/80 text-slate-300">
+            <tr>
+              <th class="px-3 py-2 text-left">ID</th>
+              <th class="px-3 py-2 text-left">Name</th>
+              <th class="px-3 py-2 text-left">Price</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-800">
+            {% for product in products %}
+              <tr>
+                <td class="px-3 py-2 text-slate-400">{{ product.id }}</td>
+                <td class="px-3 py-2 text-slate-100">{{ product.name }}</td>
+                <td class="px-3 py-2 text-slate-100">{{ "%.2f"|format(product.base_price or product.price or 0) }} {{ product.base_currency or 'USD' }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="mt-8">
+      <div class="flex items-center justify-between mb-3">
+        <h2 class="text-sm font-semibold text-slate-100">Categories</h2>
+        <a href="{{ url_for('admin_categories') }}" class="text-[11px] text-brandOrange hover:text-amber-200">
+          Manage categories
+        </a>
+      </div>
+      <div class="rounded-2xl border border-slate-800 bg-slate-950/80 p-4 text-[11px] text-slate-300">
+        {% if categories %}
+          <div class="flex flex-wrap gap-2">
+            {% for category in categories %}
+              <span class="rounded-full border border-slate-700 px-3 py-1">
+                {{ category.name }}
+              </span>
+            {% endfor %}
+          </div>
+        {% else %}
+          <p class="text-slate-500">
+            No categories defined yet. Use “Manage categories” to create your first ones.
+          </p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
